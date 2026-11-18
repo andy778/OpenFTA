@@ -40,7 +40,7 @@ import java.applet.*;
 import java.net.*;
 import java.awt.print.*;
 
-import com.sun.image.codec.jpeg.*;
+
 
 public class FTACanvas extends JPanel implements MouseListener{
 

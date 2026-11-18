@@ -1,23 +1,19 @@
-echo off
-
-REM Set this variable to point to the java installation 
-SET JAVA_HOME=C:\j2sdk1.4.2_04
-
-cd gui/FTAGUI
-
-REM compile the java
-%JAVA_HOME%\bin\javac *.java
-
-FOR %%A IN (*.java) DO (
-  %JAVA_HOME%\bin\javah -classpath .. FTAGUI.%%~nA
+@echo off
+REM Requires a JDK 21+ (javah was removed in JDK 10; javac -h generates JNI headers).
+REM Set JAVA_HOME to your JDK, e.g. C:\Program Files\Eclipse Adoptium\jdk-21...
+if "%JAVA_HOME%"=="" (
+  echo JAVA_HOME is not set
+  exit /b 1
 )
+
+cd gui\FTAGUI
+
+"%JAVA_HOME%\bin\javac" --release 21 -h . *.java || exit /b 1
 
 cd ..
 
-%JAVA_HOME%\bin\jar -cvf FTAGUI.jar FTAGUI\*.class
+"%JAVA_HOME%\bin\jar" -cvf FTAGUI.jar FTAGUI\*.class
 
 cd images
 
-%JAVA_HOME%\bin\jar -cvf ..\images.jar *.gif
-
-REM pause
+"%JAVA_HOME%\bin\jar" -cvf ..\images.jar *.gif

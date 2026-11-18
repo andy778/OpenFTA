@@ -71,6 +71,7 @@ PrintPreviewCanvas.class \
 PrintUtilities.class \
 RestrictedDocument.class \
 RestrictedLengthAlphaNumericField.class \
+RestrictedLengthExclusiveDocument.class \
 RestrictedLengthExclusiveField.class \
 RestrictedNumberDocument.class \
 RestrictLengthField.class \

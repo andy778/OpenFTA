@@ -60,9 +60,8 @@ ARFLAGS = -rv
 BUILDIR = linux.debug
 
 # Java details
-JAVAHOME = /usr/local/j2sdk1.4.2_04
+JAVAHOME = /usr/lib/jvm/java-21-openjdk-amd64
 JAVAC = $(JAVAHOME)/bin/javac
-JAVAH = $(JAVAHOME)/bin/javah
 JAR = $(JAVAHOME)/bin/jar
 
 JINCLUDES = \
@@ -70,4 +69,4 @@ JINCLUDES = \
 -I$(JAVAHOME)/include/linux \
 
 JLIBRARIES = \
--L$(JAVAHOME)/jre/lib/i386 -ljawt -lnsl -ldl -lfl
+-L$(JAVAHOME)/lib -ljawt -lnsl -ldl -lfl

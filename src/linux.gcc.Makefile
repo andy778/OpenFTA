@@ -60,9 +60,8 @@ ARFLAGS = -rv
 BUILDIR = linux
 
 # Java details
-JAVAHOME = /usr/lib/jvm/java-6-openjdk-amd64/
+JAVAHOME = /usr/lib/jvm/java-21-openjdk-amd64
 JAVAC = $(JAVAHOME)/bin/javac
-JAVAH = $(JAVAHOME)/bin/javah
 JAR = $(JAVAHOME)/bin/jar
 
 JINCLUDES = \

@@ -64,10 +64,10 @@ $(JINCLUDES) \
 
 # Java details
 JAVAC = $(JAVAHOME)/bin/javac
-JAVAH = $(JAVAHOME)/bin/javah
 JAR = $(JAVAHOME)/bin/jar
 JARFLAGS = -cvf
-CLASSPATH = $(TOP):$(JAVAHOME)/lib/tools.jar:$(JAVAHOME)/lib/dt.jar
+JAVA_RELEASE = 21
+CLASSPATH = $(TOP)
 
 
 %.o: %.c
@@ -75,10 +75,11 @@ CLASSPATH = $(TOP):$(JAVAHOME)/lib/tools.jar:$(JAVAHOME)/lib/dt.jar
 
 
 %.class: %.java
-	${JAVAC} -classpath $(CLASSPATH) $<
+	# javah was removed in JDK 10; javac -h generates the JNI headers
+	${JAVAC} --release $(JAVA_RELEASE) -classpath $(CLASSPATH) -h . $<
 
 %.h: %.class
-	${JAVAH} -classpath $(CLASSPATH) FTAGUI.$*
+	@test -f $@ || touch $@
 
 
 XLIBS = \

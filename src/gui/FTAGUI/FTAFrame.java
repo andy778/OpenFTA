@@ -309,11 +309,15 @@ public class FTAFrame extends JFrame {
 			    try {
 				BufferedOutputStream out =
 				    new BufferedOutputStream(new FileOutputStream(file));
-				com.sun.image.codec.jpeg.JPEGImageEncoder encoder = com.sun.image.codec.jpeg.JPEGCodec.createJPEGEncoder(out);
-				com.sun.image.codec.jpeg.JPEGEncodeParam param = encoder.getDefaultJPEGEncodeParam(buffered);
-				param.setQuality(1.0f, false);  // max quality
-				encoder.setJPEGEncodeParam(param);
-				encoder.encode(buffered);
+				javax.imageio.ImageWriter writer = javax.imageio.ImageIO.getImageWritersByFormatName("jpeg").next();
+				javax.imageio.ImageWriteParam param = writer.getDefaultWriteParam();
+				param.setCompressionMode(javax.imageio.ImageWriteParam.MODE_EXPLICIT);
+				param.setCompressionQuality(1.0f);  // max quality
+				javax.imageio.stream.ImageOutputStream ios = javax.imageio.ImageIO.createImageOutputStream(out);
+				writer.setOutput(ios);
+				writer.write(null, new javax.imageio.IIOImage(buffered, null, null), param);
+				ios.close();
+				writer.dispose();
 				out.close();
 			    } catch (java.io.FileNotFoundException x) {
 				postWarning("Unable to write image file", "Export Image");
