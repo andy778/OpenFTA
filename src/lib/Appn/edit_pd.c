@@ -131,7 +131,7 @@ MakeCopy(
  when linking a primary event on the tree to a primary event in
  the database, their types are different.
 ---------------------------------------------------------------*/
-static change_cb(EVENT_PARCEL *change)
+static int change_cb(EVENT_PARCEL *change)
 {
   BOOL perform_change = TRUE;
 

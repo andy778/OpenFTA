@@ -922,8 +922,9 @@ void
   calc_sub_term(
     int    *z,      /* IN  - array containing combination */
     int     zi,     /* IN  - length of combination        */
-    Group **index)  /* IN  - user data index to m.c.s.    */
+    void   *data)   /* IN  - user data: Group ** index to m.c.s. */
 {
+    Group   **index = (Group **)data;
     Group    *g = GroupCreateN(basic_n), *tmp;
 /*     char     *s; */
     float     p;

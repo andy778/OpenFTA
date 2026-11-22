@@ -67,7 +67,7 @@ static void
 eval_comb( 
           int *z,
           int zi,
-          TREE * tree );
+          void * tree );
 
 /* global variables used for progress reports */
 static int ncombs;        /* number of combs to test                   */
@@ -280,8 +280,9 @@ void
 eval_comb( 
           int *z,        /* IN  - array containing combination */
           int zi,        /* IN  - length of combination        */
-          TREE * tree )        /* IN  - user data - tree             */
+          void * p )        /* IN  - user data - tree             */
 {
+  TREE *tree = (TREE *)p;
   static Group *g = NULL;
   static int n = 0;
   int  done;

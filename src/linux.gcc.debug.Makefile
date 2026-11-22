@@ -60,7 +60,8 @@ ARFLAGS = -rv
 BUILDIR = linux.debug
 
 # Java details
-JAVAHOME = /usr/lib/jvm/java-21-openjdk-amd64
+# Default: the JDK that provides javac on PATH; override with make JAVAHOME=...
+JAVAHOME ?= $(shell dirname $$(dirname $$(readlink -f $$(command -v javac))))
 JAVAC = $(JAVAHOME)/bin/javac
 JAR = $(JAVAHOME)/bin/jar
 

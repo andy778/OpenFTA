@@ -14,6 +14,12 @@ examples - example fault trees
 
 Building OpenFTA - Linux
 ------------------------
+Quick start (tested with GCC 16 and OpenJDK 27; needs gcc, make and
+a JDK whose javac is on PATH, or set JAVAHOME):
+
+    make -C src && make -C src install
+    bin/OpenFTA.sh
+
 The Linux build is controlled via the use of makefiles. Before the
 source code can be compiled the makefiles will have to be customised
 to the setup of the development machine. Examples of the customisable
