@@ -60,7 +60,8 @@ ARFLAGS = -rv
 BUILDIR = linux
 
 # Java details
-JAVAHOME = /usr/lib/jvm/java-21-openjdk-amd64
+# Default: the JDK that provides javac on PATH; override with make JAVAHOME=...
+JAVAHOME ?= $(shell dirname $$(dirname $$(readlink -f $$(command -v javac))))
 JAVAC = $(JAVAHOME)/bin/javac
 JAR = $(JAVAHOME)/bin/jar
 
@@ -68,7 +69,5 @@ JINCLUDES = \
 -I$(JAVAHOME)/include \
 -I$(JAVAHOME)/include/linux \
 
-JLIBRARIES = \
--L$(JAVAHOME)/jre/lib/amd64 \
--L$(JAVAHOME)/jre/lib/i386 \
--ljawt -lnsl -ldl -lfl
+# The native code uses no JDK, X11 or lex library, only libm.
+JLIBRARIES = -lm

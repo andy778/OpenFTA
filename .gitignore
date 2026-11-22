@@ -1,0 +1,9 @@
+# Build output (make; make -C src install)
+*.o
+*.a
+*.so
+*.class
+*.jar
+src/gui/FTAGUI/*.h
+src/lib/*/linux/
+src/lib/*/linux.debug/

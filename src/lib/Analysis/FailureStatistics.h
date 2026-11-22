@@ -104,5 +104,12 @@ extern void
     int *n, 
     int *oth );
 
+/*---------------------------------------------------------------
+ Routine : compress_fail_data2
+ Purpose : Compress the data to minimal sets
+---------------------------------------------------------------*/
+extern void
+  compress_fail_data2( Fnode **h, int *n, int *oth );
+
 #endif
 

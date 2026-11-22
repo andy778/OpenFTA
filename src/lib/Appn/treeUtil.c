@@ -992,7 +992,7 @@ load_tree(TREE *tree, char *filename)
       
 /*	if(absolute_dbname = realloc(absolute_dbname, strlen(absolute_dbname) + strlen(dbname) + 1)) { */
 
-	if(fResizeMemory(&absolute_dbname, strlen(absolute_dbname) + strlen(dbname) + 1)) {
+	if(fResizeMemory((void **)&absolute_dbname, strlen(absolute_dbname) + strlen(dbname) + 1)) {
       strcat(absolute_dbname, dbname); 
     } else {
       return TREE_FILE_ERROR;    
